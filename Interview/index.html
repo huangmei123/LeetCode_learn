@@ -19,8 +19,9 @@
     }
 
     .out {
-      /* position: absolute; top: 50%;
-      transform: translateY(-50%);  */
+      position: absolute; 
+      top: 50%;/*A的上边框距离顶部50%*/
+      transform: translateY(-50%); /*相对于自己的宽高*/
       background-color: blue;
       width: 100%;
       margin-left: 10px;
@@ -49,7 +50,7 @@
       console.log(Array.from(arguments));
       console.log([...arguments])
       console.log(Array.prototype.slice.call(arguments));
-      console.log(Array.prototype.splice.call(arguments, 0));
+      console.log(Array.prototype.splice.call(arguments, 0));//必须有参数
       let a = []
       a.slice()
     }
@@ -65,7 +66,20 @@
     a == b // false
     let e = {}, f = {}
     e == f
-
+    function Animal(name,color){
+      this.name=name;
+      this.color=color;
+    }
+    Animal.prototype.say=function(){
+      return 'I am a ${this.color} ${this.name}';
+    };
+    const Cat =Animal.bind(null,'cat');
+    const cat =new Cat('white'); 
+    // 原型链的查找 
+    if(cat.say() === 'I am white cat ' &&
+     cat instanceof Cat && cat instanceof Animal){
+      console.log('success');
+    }
     
   </script>
 </body>
